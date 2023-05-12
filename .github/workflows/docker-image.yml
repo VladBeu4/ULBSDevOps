@@ -28,5 +28,7 @@ jobs:
           host: 193.181.186.89
           user:  ${{ secrets.SERVER_USERNAME }}
           pass: ${{ secrets.SERVER_PASSWORD }}
-          script: docker run -p 80:80 -d vladbeuvisma/ulbsdevops:latest
+          script: |
+            /home/devops/script.sh
+            docker run -p 80:80 -d vladbeuvisma/ulbsdevops:latest
   
