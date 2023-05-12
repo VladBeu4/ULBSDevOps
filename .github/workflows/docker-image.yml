@@ -17,3 +17,15 @@ jobs:
         docker build . --file Dockerfile --tag ulbsdevops:latest
         docker tag ulbsdevops:latest vladbeuvisma/ulbsdevops:latest
         docker push vladbeuvisma/ulbsdevops:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh-pipeline
+        uses: cross-the-world/ssh-pipeline@v1.2.0
+        with:
+          host: 193.181.186.89
+          user:  ${{ secrets.SERVER_USERNAME }}
+          pass: ${{ secrets.SERVER_PASSWORD }}
+          script: docker run -p 80:80 -d vladbeuvisma/ulbsdevops:latest
+  
