@@ -15,3 +15,5 @@ jobs:
       run: |
         docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_PASSWORD }}
         docker build . --file Dockerfile --tag ulbsdevops:latest
+        docker tag ulbsdevops:latest vladbeuvisma/ulbsdevops:latest
+        docker push vladbeuvisma/ulbsdevops:latest
